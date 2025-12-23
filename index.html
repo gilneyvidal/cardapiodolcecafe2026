@@ -7,10 +7,8 @@
     <style>
         /*
         * Estilos para o cardápio da Dolce DC Café.
-        * VERSÃO RESTAURADA: Primeira Sugestão (Light Mode / Clean).
-        * Fundo: Cimento Queimado Claro.
-        * Detalhes: Terracota Suave.
-        * Texto: Marrom Café.
+        * VERSÃO RESTAURADA E CORRIGIDA: Light Mode / Clean.
+        * Correção: Tamanhos das imagens (topo e ícones) ajustados.
         */
 
         @font-face {
@@ -81,6 +79,14 @@
         filter: invert(55%) sepia(26%) saturate(1008%) hue-rotate(325deg) brightness(94%) contrast(88%);
         }
 
+        /* CORREÇÃO: Tamanho da imagem de topo */
+        .topo-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
         .menu-title {
         font-family: "Dolato", "Calibri", sans-serif;
         font-size: 2.5rem;
@@ -92,6 +98,19 @@
         /* Ícones e Imagens Decorativas: Filtro Terracota */
         .decor-icon, .category-icon, .decor-image, .topo-img {
             filter: invert(55%) sepia(26%) saturate(1008%) hue-rotate(325deg) brightness(94%) contrast(88%);
+        }
+        
+        /* CORREÇÃO: Tamanho dos ícones das categorias */
+        .category-icon {
+            width: 35px;
+            height: auto;
+            display: inline-block;
+        }
+
+        /* CORREÇÃO: Tamanho de imagens decorativas gerais */
+        .decor-image {
+            width: 80px;
+            height: auto;
         }
 
         .menu {
