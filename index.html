@@ -7,9 +7,10 @@
     <style>
         /*
         * Estilos para o cardápio da Dolce DC Café.
-        * ATUALIZAÇÃO v5: Paleta Clean/Light Mode conforme PDF.
-        * Base: Cimento Queimado Claro + Branco Quente.
-        * Acentos: Terracota Suave (substituindo o laranja).
+        * VERSÃO RESTAURADA: Primeira Sugestão (Light Mode / Clean).
+        * Fundo: Cimento Queimado Claro.
+        * Detalhes: Terracota Suave.
+        * Texto: Marrom Café.
         */
 
         @font-face {
@@ -19,25 +20,28 @@
         font-style: normal;
         }
 
-        /* Variáveis CSS Atualizadas para a Nova Identidade Visual */
         :root {
-        /* Base: Cimento queimado claro (Fundo da página) */
+        /* Base: Cimento Queimado Claro (Fundo da página) */
         --background-color: #e8e6e1; 
         
-        /* Branco Quente (Fundo do Cardápio) */
+        /* Branco Quente (Fundo dos containers) */
         --card-bg: #faf9f6; 
 
-        /* Terracota Suave (Cor principal de destaque, substitui o antigo laranja) */
-        --orange: #c47f68; 
+        /* Terracota Suave (Cor principal de destaque) */
+        --terracotta: #c47f68; 
         
         /* Terracota Escuro (Para hovers e contrastes) */
-        --orange-dark: #a85f49; 
+        --terracotta-dark: #a85f49; 
 
         /* Texto: Marrom Madeira/Café Escuro (Para contraste no fundo claro) */
         --text-color: #4a3b2a;
         
         /* Texto Secundário (Cinza para descrições) */
         --text-secondary: #666666;
+
+        /* Inputs Clean */
+        --input-bg: #ffffff;
+        --input-text: #4a3b2a;
         }
 
         body {
@@ -46,101 +50,48 @@
         font-family: "Calibri", Arial, sans-serif;
         background-color: var(--background-color);
         color: var(--text-color);
+        min-height: 100vh;
         }
 
         /*
-        * Envoltório que circunda o cabeçalho e o cardápio.
-        * Fundo alterado para Branco Quente.
-        * Borda alterada para Terracota.
+        * Envoltório principal
+        * Borda Terracota e Fundo Branco Quente
         */
         .menu-wrapper {
         position: relative;
-        border: 5px solid var(--orange);
+        border: 5px solid var(--terracotta);
         border-radius: 16px;
         padding: 30px 25px 40px;
         background-color: var(--card-bg);
         margin-bottom: 40px;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15); /* Sombra suavizada para o tema clean */
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15); /* Sombra suave */
         }
 
-        /* Ajustes no cabeçalho dentro do envoltório */
         .menu-wrapper header {
         text-align: center;
         margin-bottom: 30px;
         position: relative;
         }
 
-        /* Linha com setas e título do cardápio */
-        .title-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 10px;
-        }
-
-        /* Imagem do título "Cardápio". 
-        * Filtro ajustado para transformar branco/cor original em Terracota */
+        /* Imagem do título "Cardápio" */
         .cardapio-img {
         height: 60px;
         width: auto;
+        /* Filtro para transformar branco/preto em Terracota Suave (#c47f68) */
         filter: invert(55%) sepia(26%) saturate(1008%) hue-rotate(325deg) brightness(94%) contrast(88%);
         }
 
-        /* Setas esquerda e direita */
-        .arrow-left,
-        .arrow-right {
-        flex: 1;
-        height: 24px;
-        width: 100%;
-        object-fit: fill;
-        max-width: 100%;
-        }
-
-        /* Título principal do cardápio (script) 
-        * Cor ajustada para o texto escuro ou terracota */
         .menu-title {
         font-family: "Dolato", "Calibri", sans-serif;
         font-size: 2.5rem;
-        color: var(--orange-dark); /* Destaque no título */
+        color: var(--terracotta-dark);
         margin: 0;
         margin-bottom: 10px;
         }
 
-        /* Linha superior com a logo central e ícone decorativo à direita */
-        .header-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        position: relative;
-        }
-
-        .header-left,
-        .header-right {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        }
-
-        .header-center {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        }
-
-        header {
-        margin-bottom: 0;
-        }
-
-        /* Ajuste de cores para o ícone decorativo (Terracota) */
-        .decor-icon {
-        width: 120px;
-        height: auto;
-        filter: invert(55%) sepia(26%) saturate(1008%) hue-rotate(325deg) brightness(94%) contrast(88%);
+        /* Ícones e Imagens Decorativas: Filtro Terracota */
+        .decor-icon, .category-icon, .decor-image, .topo-img {
+            filter: invert(55%) sepia(26%) saturate(1008%) hue-rotate(325deg) brightness(94%) contrast(88%);
         }
 
         .menu {
@@ -154,9 +105,9 @@
         padding: 0 20px;
         }
 
-        /* Linha vertical terracota entre as colunas */
+        /* Sem a linha divisória vertical ("risco") para visual mais limpo */
         .menu-col:not(:first-child) {
-        border-left: 2px solid var(--orange);
+        border-left: none; 
         }
 
         .category-block {
@@ -175,18 +126,7 @@
         font-size: 1.4rem;
         margin-top: 0;
         margin-bottom: 12px;
-        color: var(--orange); /* Alterado de #fff para Terracota */
-        }
-
-        /* Ícone da categoria: Terracota */
-        .category-block .category-icon {
-        width: 32px;
-        height: auto;
-        filter: invert(55%) sepia(26%) saturate(1008%) hue-rotate(325deg) brightness(94%) contrast(88%);
-        }
-
-        .category-block .category-items {
-        margin-top: 0;
+        color: var(--terracotta);
         }
 
         /* Linha de item */
@@ -195,9 +135,10 @@
         grid-template-columns: 2fr auto 40px auto;
         align-items: center;
         column-gap: 16px;
-        padding: 5px 0;
-        border-bottom: 1px dotted var(--orange);
-        color: var(--text-color); /* Alterado de #fff para cor de texto escura */
+        padding: 8px 0;
+        /* Linha pontilhada Terracota */
+        border-bottom: 1px dotted var(--terracotta);
+        color: var(--text-color);
         }
 
         .category-block .menu-row:last-child {
@@ -206,15 +147,12 @@
 
         .category-block .menu-row span {
         font-size: 0.95rem;
-        color: var(--text-color); /* Alterado de #fff para cor de texto escura */
+        color: var(--text-color);
         }
-
-        .category-block .menu-row input[type="number"] {
-        width: 55px;
-        padding: 4px;
-        font-size: 0.9rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        
+        .price-text {
+            color: var(--text-color) !important;
+            font-weight: bold;
         }
 
         /* Atrasos da animação */
@@ -226,64 +164,72 @@
         .category-block:nth-of-type(6) { animation-delay: 0.5s; }
 
         @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Footer */
         .footer {
         text-align: center;
-        color: var(--text-color); /* Alterado de #fff para escuro */
+        color: var(--text-color);
         font-size: 0.9rem;
         margin-top: 30px;
         }
 
         .footer a {
-        color: var(--orange);
+        color: var(--terracotta);
         text-decoration: none;
         }
         .footer a:hover {
         text-decoration: underline;
-        color: var(--orange-dark);
+        color: var(--terracotta-dark);
         }
 
         /* Mensagem informativa */
         .info-message {
-        background-color: #fdfdfd;
-        border-left: 4px solid var(--orange);
+        background-color: #ffffff;
+        border-left: 4px solid var(--terracotta);
         padding: 12px 16px;
         margin-bottom: 20px;
         color: var(--text-color);
         font-size: 0.9rem;
         line-height: 1.4;
         box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        border-radius: 0 4px 4px 0;
+        }
+        
+        .info-message strong {
+            color: var(--terracotta-dark);
+        }
+
+        .header-separator {
+        border-top: 2px solid var(--terracotta);
+        margin: 20px 0 10px;
+        }
+
+        .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
         }
 
         /* * =========================================
-         * NOVO ESTILO: CARRINHO FLUTUANTE (MODAL)
+         * CARRINHO FLUTUANTE (MODAL) - VERSÃO CLEAN
          * =========================================
          */
 
-        /* Botão flutuante do carrinho */
         .cart-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: var(--orange);
-            color: #fff; 
+            background-color: var(--terracotta);
+            color: #fff;
             border: none;
             border-radius: 50px;
             padding: 15px 25px;
             font-size: 1rem;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            z-index: 1000; /* Abaixo do modal, acima do conteúdo */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
             transition: transform 0.2s ease, background-color 0.2s ease;
             display: flex;
             align-items: center;
@@ -291,11 +237,10 @@
             font-weight: bold;
         }
         .cart-button:hover {
-            background-color: var(--orange-dark);
+            background-color: var(--terracotta-dark);
             transform: scale(1.05);
         }
 
-        /* Fundo escuro do modal */
         .cart-modal-overlay {
             position: fixed;
             top: 0;
@@ -303,8 +248,8 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
-            z-index: 2000; /* Acima de tudo */
-            display: none; /* Controlado via JS (flex quando ativo) */
+            z-index: 2000;
+            display: none;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -312,20 +257,20 @@
             backdrop-filter: blur(3px);
         }
 
-        /* Janela do modal (conteúdo) */
         .cart-modal-content {
-            background-color: var(--card-bg);
+            background-color: var(--card-bg); /* Fundo claro */
             width: 100%;
             max-width: 500px;
-            max-height: 90vh; /* Máximo 90% da altura da tela */
+            max-height: 90vh;
             border-radius: 12px;
-            border: 2px solid var(--orange);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--terracotta);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             position: relative;
             animation: modalPopUp 0.3s ease-out;
             overflow: hidden;
+            color: var(--text-color);
         }
 
         @keyframes modalPopUp {
@@ -333,10 +278,9 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* Cabeçalho do Modal (Título + Botão Fechar) */
         .cart-modal-header {
             padding: 15px 20px;
-            background-color: var(--orange);
+            background-color: var(--terracotta);
             color: #fff;
             display: flex;
             justify-content: space-between;
@@ -358,18 +302,13 @@
             cursor: pointer;
             padding: 0;
         }
-        .close-modal-btn:hover {
-            color: #eee;
-        }
 
-        /* Corpo rolável do modal */
         .cart-modal-body {
             padding: 20px;
             overflow-y: auto;
             flex: 1;
         }
 
-        /* Ajustes internos para o formulário e lista dentro do modal */
         .cart-section, .order-form {
             margin-top: 0;
             border: none;
@@ -379,7 +318,6 @@
             max-width: 100%;
         }
         
-        /* Removemos os títulos H2 originais de dentro das seções pois temos o header do modal */
         .cart-section h2, .order-form h2 {
             display: none;
         }
@@ -387,202 +325,136 @@
         .order-form {
             margin-top: 20px;
             padding-top: 20px;
-            border-top: 1px dashed var(--orange);
+            border-top: 1px dashed var(--terracotta);
         }
 
-        /* Indicador de quantidade ao lado do botão + */
-        .qty-indicator {
-        font-size: 0.9rem;
-        color: var(--orange); /* Alterado para Terracota para destaque no fundo branco */
-        font-weight: bold;
-        margin-left: 4px;
-        }
-
-        .header-separator {
-        border-top: 2px solid var(--orange);
-        margin: 20px 0 10px;
-        }
-
-        .container {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 20px;
-        }
-
-        /* Estilos decorativos */
-        .decor-image {
-        width: 80px;
-        height: auto;
-        margin: 5px;
-        display: block;
-        /* Filtro Terracota */
-        filter: invert(55%) sepia(26%) saturate(1008%) hue-rotate(325deg) brightness(94%) contrast(88%);
-        }
-
-        .decor-middle {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 20px 0;
-        }
-
-        .decor-bottom {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        }
-
-        .decor-bottom .decor-image {
-        width: 100px;
-        }
-
-        .topo-img {
-        display: block;
-        width: 100%;
-        height: auto;
-        margin: 0 auto 20px;
-        }
-
-        /* Carrinho itens */
-        .cart-items {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        }
-        .cart-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        font-size: 0.95rem;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 8px;
-        margin-bottom: 8px;
-        }
-        .cart-item:last-child {
-            border-bottom: none;
-        }
-        .cart-item-name { flex: 2; font-weight: 500;}
-        .cart-item-price { flex: 1; text-align: right; }
-        .cart-item-controls {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 5px;
-        }
-        .cart-item-controls button {
-        width: 28px;
-        height: 28px;
-        border: 1px solid var(--orange);
-        background-color: var(--orange);
-        color: #fff;
-        font-weight: bold;
-        border-radius: 4px;
-        cursor: pointer;
-        }
-        .cart-total {
-        font-weight: bold;
-        text-align: right;
-        margin-top: 15px;
-        font-size: 1.2rem;
-        color: var(--orange-dark);
-        }
-
-        /* Botão Adicionar */
+        /* Botões +/- */
         .add-btn {
-        width: 32px;
-        height: 28px;
-        border: 1px solid var(--orange);
-        background-color: var(--orange);
-        color: #fff;
-        font-size: 1rem;
-        border-radius: 4px;
-        cursor: pointer;
-        text-align: center;
-        padding: 0;
+            width: 32px;
+            height: 28px;
+            border: 1px solid var(--terracotta);
+            background-color: var(--terracotta);
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            padding: 0;
+            font-weight: bold;
         }
         .add-btn:hover {
-        background-color: var(--orange-dark);
+            background-color: var(--terracotta-dark);
+        }
+
+        .qty-indicator {
+            font-size: 0.9rem;
+            color: var(--terracotta); 
+            font-weight: bold;
+            margin-left: 4px;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+        .cart-item:last-child { border-bottom: none; }
+        .cart-item-name { flex: 2; font-weight: 500; color: var(--text-color); }
+        .cart-item-price { flex: 1; text-align: right; color: var(--text-color); }
+        
+        .cart-item-controls button {
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--terracotta);
+            background-color: var(--terracotta);
+            color: #fff;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: var(--terracotta-dark);
         }
 
         /* Responsividade */
         @media (max-width: 900px) {
-        .menu {
-            flex-direction: column;
-        }
-        .menu-col {
-            min-width: 100%;
-            padding: 0 12px;
-            border-left: none;
-            border-top: 2px solid var(--orange);
-            margin-top: 20px;
-            box-sizing: border-box;
-        }
-        .menu-col:first-child {
-            border-top: none;
-            margin-top: 0;
-        }
-        .category-block h3 {
-            font-size: 1.2rem;
-        }
-        .category-block .menu-row,
-        .category-column .menu-row {
-            grid-template-columns: 2fr auto 40px auto;
-            column-gap: 14px;
-        }
-        .container {
-            padding: 10px;
-        }
-        .menu-wrapper {
-            padding: 20px 15px;
-        }
-        .cart-button {
-            padding: 12px 20px;
-            font-size: 0.9rem;
-        }
+            .menu { flex-direction: column; }
+            .menu-col {
+                min-width: 100%;
+                padding: 0 12px;
+                border-left: none;
+                border-top: 2px solid var(--terracotta);
+                margin-top: 20px;
+                box-sizing: border-box;
+            }
+            .menu-col:first-child { border-top: none; margin-top: 0; }
+            .category-block h3 { font-size: 1.2rem; }
+            .category-block .menu-row, .category-column .menu-row {
+                grid-template-columns: 2fr auto 40px auto;
+                column-gap: 14px;
+            }
+            .container { padding: 10px; }
+            .menu-wrapper { padding: 20px 15px; }
+            .cart-button { padding: 12px 20px; font-size: 0.9rem; }
         }
 
-        .form-group {
-        margin-bottom: 15px;
-        }
-
+        .form-group { margin-bottom: 15px; }
         .form-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        font-size: 0.9rem;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: var(--text-color);
         }
 
+        /* Inputs Clean */
         .form-group input,
         .form-group select {
-        width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-        border: 1px solid #ccc; /* Bordas suaves */
-        border-radius: 4px;
-        font-size: 1rem;
-        background-color: #fff;
-        color: var(--text-color);
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: var(--input-bg);
+            color: var(--input-text);
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--terracotta);
         }
 
         button[type="submit"] {
-        display: block;
-        width: 100%;
-        background-color: var(--orange);
-        color: #fff;
-        border: none;
-        padding: 15px 20px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        margin-top: 20px;
+            display: block;
+            width: 100%;
+            background-color: var(--terracotta);
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
         }
-
         button[type="submit"]:hover {
-        background-color: var(--orange-dark);
+            background-color: var(--terracotta-dark);
         }
     </style>
   </head>
@@ -865,8 +737,6 @@
             } else {
                 cartButtonElem.style.display = 'none'; // Esconde se vazio
                 cartCount.textContent = '0';
-                // Se o carrinho esvaziar enquanto o modal está aberto, podemos optar por fechar ou não.
-                // Por enquanto, vamos manter aberto para que o usuário veja que removeu tudo.
             }
         }
 
@@ -893,11 +763,8 @@
             let total = 0;
             const names = Object.keys(cart);
             
-            // Lógica antiga de display: none foi removida daqui, pois o modal controla a visibilidade.
-            // Apenas renderizamos o conteúdo se houver itens.
-            
             if (names.length === 0) {
-                cartItemsContainer.innerHTML = '<p style="text-align:center; padding: 20px;">Seu carrinho está vazio.</p>';
+                cartItemsContainer.innerHTML = '<p style="text-align:center; padding: 20px; color: #aaa;">Seu carrinho está vazio.</p>';
                 cartTotalSpan.textContent = '0,00';
                 return;
             }
@@ -963,37 +830,7 @@
                 leftCol.appendChild(block);
                 } else {
                 rightCol.appendChild(block);
-                if (category.name === 'Cafeteria') {
-                    const midDecor = document.createElement('div');
-                    midDecor.className = 'decor-middle';
-                    const row1 = document.createElement('div');
-                    const rocamboleImg = document.createElement('img');
-                    rocamboleImg.src = 'images/rocambole.png';
-                    rocamboleImg.alt = '';
-                    rocamboleImg.className = 'decor-image';
-                    const rosquinhaImg = document.createElement('img');
-                    rosquinhaImg.src = 'images/rosquinha.png';
-                    rosquinhaImg.alt = '';
-                    rosquinhaImg.className = 'decor-image';
-                    row1.appendChild(rocamboleImg);
-                    row1.appendChild(rosquinhaImg);
-                    row1.style.display = 'flex';
-                    row1.style.justifyContent = 'center';
-                    row1.style.gap = '20px';
-                    midDecor.appendChild(row1);
-
-                    const row2 = document.createElement('div');
-                    const xicaraImg = document.createElement('img');
-                    xicaraImg.src = 'images/xicara.png';
-                    xicaraImg.alt = '';
-                    xicaraImg.className = 'decor-image';
-                    row2.appendChild(xicaraImg);
-                    row2.style.display = 'flex';
-                    row2.style.justifyContent = 'center';
-                    row2.style.marginTop = '10px';
-                    midDecor.appendChild(row2);
-                    rightCol.appendChild(midDecor);
-                }
+                // Código de decoração removido aqui
                 }
             }
             });
@@ -1034,11 +871,12 @@
                 desc.style.display = 'block';
                 desc.style.marginTop = '2px';
                 desc.style.opacity = '0.9';
-                desc.style.color = '#666'; 
+                desc.style.color = '#999'; 
                 nameBox.appendChild(desc);
                 }
 
                 const priceSpan = document.createElement('span');
+                priceSpan.className = 'price-text';
                 priceSpan.textContent = `R$ ${item.price}`;
 
                 const addBtn = document.createElement('button');
