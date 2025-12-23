@@ -1,0 +1,150 @@
+@font-face {
+  font-family: "Dolato";
+  src: url("fonts/Dolato de Stato Font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* Nova Paleta conforme PDF de Reforma */
+  --bg-cimento: #e5e5e5;        /* Base: Cimento Queimado Claro */
+  --branco-quente: #f9f7f2;      /* Branco Quente */
+  --madeira-freijo: #c9a67a;     /* Aquecimento: Madeira Clara */
+  --verde-oliva: #8d9981;        /* Complementar: Verde Oliva */
+  --terracota: #b6735a;          /* Complementar: Terracota */
+  --text-color: #4a4a4a;         /* Texto Escuro Suave */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Calibri", Arial, sans-serif;
+  background-color: var(--bg-cimento);
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Envoltório do Cardápio - Agora com tons de madeira e branco quente */
+.menu-wrapper {
+  position: relative;
+  border: 4px solid var(--madeira-freijo);
+  border-radius: 16px;
+  padding: 30px 25px;
+  background-color: var(--branco-quente);
+  margin-bottom: 40px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+.header-separator {
+  border-top: 2px solid var(--verde-oliva);
+  margin: 20px 0;
+}
+
+/* Títulos e Categorias */
+.menu-title {
+  font-family: "Dolato", sans-serif;
+  font-size: 2.8rem;
+  color: var(--terracota);
+  text-align: center;
+}
+
+.category-block h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Dolato", sans-serif;
+  font-size: 1.5rem;
+  color: var(--verde-oliva);
+  border-bottom: 2px solid var(--madeira-freijo);
+  padding-bottom: 5px;
+}
+
+/* Itens do Menu */
+.menu-row {
+  display: grid;
+  grid-template-columns: 2fr auto 40px auto;
+  align-items: center;
+  column-gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px dotted var(--madeira-freijo);
+}
+
+/* Carrinho e Formulário - Design Clean */
+.cart-section, .order-form {
+  background-color: var(--branco-quente);
+  border: 2px solid var(--verde-oliva);
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 500px;
+  margin: 30px auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.cart-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--terracota);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 25px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+button[type="submit"], .btn-primary {
+  background-color: var(--verde-oliva);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Estilos do Modal de Confirmação */
+.modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 3000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 450px;
+  width: 90%;
+  border-top: 10px solid var(--terracota);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-secondary {
+  background-color: #eee;
+  color: #666;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  flex: 1;
+  cursor: pointer;
+}
+
+/* Filtro para ícones ficarem no tom Verde Oliva */
+.category-icon {
+  filter: invert(61%) sepia(11%) saturate(444%) hue-rotate(46deg) brightness(94%) contrast(88%);
+}
